@@ -4,15 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Locker {
-    private String id;
+    private final String id;
     private String name;
     private Address address;
     private final List<Parcel> parcelList;
-
-
-    public Locker() {
-        parcelList = new LinkedList<>();
-    }
 
     public Locker(String id, String name, Address address) {
         this.id = id;
@@ -23,6 +18,13 @@ public class Locker {
 
     public List<Parcel> getParcelList() {
         return parcelList;
+    }
+
+    public Parcel getParcelById(String parcelId) {
+        return parcelList.stream()
+                .filter(parcel -> String.valueOf(parcel.getId()).equals(parcelId))
+                .findFirst()
+                .orElse(null);
     }
 
     public String getId() {
