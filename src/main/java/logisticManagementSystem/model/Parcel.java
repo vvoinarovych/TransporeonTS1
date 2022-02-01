@@ -1,5 +1,8 @@
 package logisticManagementSystem.model;
 
+import logisticManagementSystem.Size;
+import logisticManagementSystem.State;
+
 import java.util.Random;
 import java.util.UUID;
 
@@ -12,7 +15,7 @@ public class Parcel {
 
     private final UUID id;
     private String name;
-    private String size;
+    private Size size;
     private double weight;
     private String recipient;
     private String sender;
@@ -24,7 +27,7 @@ public class Parcel {
         id = UUID.randomUUID();
     }
 
-    public Parcel(String name, String size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker, State state) {
+    public Parcel(String name, Size size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker, State state) {
         id = UUID.fromString(forTest[new Random().nextInt(forTest.length)]);
         this.name = name;
         this.size = size;
@@ -44,12 +47,12 @@ public class Parcel {
         this.name = name;
     }
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setWeight(String weight) {
+        this.weight = Double.parseDouble(weight);
     }
 
     public void setRecipient(String recipient) {

@@ -43,8 +43,8 @@ public class Locker {
         this.name = name;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddress(String address) {
+        this.address =new Address(address);
     }
 
     @Override

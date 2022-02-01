@@ -10,6 +10,21 @@ public class Address {
         this.city = city;
         this.postalCode = postalCode;
     }
+    public Address(String fullAddress){
+        String[] divided = fullAddress.split(", ");
+        street =divided[0];
+        city = divided[1];
+        postalCode = divided[2];
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                '}';
+    }
 
     public String getCity() {
         return city;
