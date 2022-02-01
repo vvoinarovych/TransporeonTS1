@@ -1,4 +1,4 @@
-package logisticManagementSystem;
+package logisticManagementSystem.model;
 
 import java.util.UUID;
 
@@ -11,13 +11,13 @@ public class Parcel {
     private String sender;
     private Locker senderLocker;
     private Locker recipientLocker;
-    private PackageState state;
+    private State state;
 
     public Parcel() {
         id = UUID.randomUUID();
     }
 
-    public Parcel(String name, String size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker, PackageState state) {
+    public Parcel(String name, String size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker, State state) {
         id = UUID.randomUUID();
         this.name = name;
         this.size = size;
@@ -40,8 +40,8 @@ public class Parcel {
                 ", weight=" + weight +
                 ", recipient='" + recipient + '\'' +
                 ", sender='" + sender + '\'' +
-                ", senderLocker=" + senderLocker +
-                ", recipientLocker=" + recipientLocker +
+                ", senderLocker=" + senderLocker.getName() +
+                ", recipientLocker=" + recipientLocker.getName() +
                 ", state=" + state +
                 '}';
     }

@@ -1,5 +1,10 @@
 package logisticManagementSystem;
 
+import logisticManagementSystem.model.Address;
+import logisticManagementSystem.model.Locker;
+import logisticManagementSystem.model.Parcel;
+import logisticManagementSystem.model.State;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,7 +45,7 @@ public class LogisticManager {
     public void displayByCity(String city) {
         //is it worth to create class Address +
         lockerList.stream()
-                .filter(l -> l.getAddress().contains(city))
+                .filter(l -> l.getAddress().getCity().equals(city))
                 .forEach(System.out::println);
     }
 
@@ -48,18 +53,34 @@ public class LogisticManager {
         findById(id).setName(name);
     }
 
-    public void updateLockerAddress(String id, String address) {
+    public void updateLockerAddress(String id, Address address) {
         findById(id).setAddress(address);
     }
 
-    public void update(String id, String name, String address) {
+    public void update(String id, String name, Address address) {
         updateLockerName(id, name);
         updateLockerAddress(id, address);
     }
 
     public void addParcel(String name, String size, double weight, String recipient, String sender, String senderLockerId, String recipientLockerId, String state) {
+        Locker senderLocker = findById(senderLockerId);
+        Locker recipientLocker = findById(recipientLockerId);
+        State pState = State.valueOf(state);
+        Parcel parcel = new Parcel(name, size,weight,recipient,sender,senderLocker,recipientLocker,pState);
+        findById(senderLockerId).getParcelList().add(parcel);
 
     }
+    /**
+    private String name;
+    private String size;
+    private double weight;
+    private String recipient;
+    private String sender;
+    private Locker senderLocker;++++
+    private Locker recipientLocker;+++
+    private PackageState state;
+    */
+
 
     @Override
     public String toString() {
