@@ -1,9 +1,9 @@
 package logisticManagementSystem.model;
 
 public class Address {
-    private String street;
-    private String city;
-    private String postalCode;
+    private final String street;
+    private final String city;
+    private final String postalCode;
 
     public Address(String street, String city, String postalCode) {
         this.street = street;

@@ -1,17 +1,12 @@
 package logisticManagementSystem.model;
 
-import logisticManagementSystem.Size;
-import logisticManagementSystem.State;
+import logisticManagementSystem.enums.Size;
+import logisticManagementSystem.enums.State;
 
-import java.util.Random;
+
 import java.util.UUID;
 
 public class Parcel {
-    public String[] forTest = new String[]{"a670bd17-f892-436e-8c76-1711f6dd7e50",
-            "942e6c66-94a5-4e90-b4d4-a96e6b21ddd0",
-            "344174ae-65b6-48e8-9a26-bb8d4f92f7ac",
-            "3e9f6566-cffe-4279-abc5-b673629d981e",
-            "ef51711e-790b-4274-ac50-7b0824444761"};
 
     private final UUID id;
     private String name;
@@ -23,12 +18,8 @@ public class Parcel {
     private Locker recipientLocker;
     private State state;
 
-    public Parcel() {
+    public Parcel(String name, Size size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker) {
         id = UUID.randomUUID();
-    }
-
-    public Parcel(String name, Size size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker, State state) {
-        id = UUID.fromString(forTest[new Random().nextInt(forTest.length)]);
         this.name = name;
         this.size = size;
         this.weight = weight;
@@ -36,7 +27,7 @@ public class Parcel {
         this.sender = sender;
         this.senderLocker = senderLocker;
         this.recipientLocker = recipientLocker;
-        this.state = state;
+        this.state = State.WAITING_FOR_PICKING_UP;
     }
 
     public UUID getId() {
@@ -51,8 +42,8 @@ public class Parcel {
         this.size = size;
     }
 
-    public void setWeight(String weight) {
-        this.weight = Double.parseDouble(weight);
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public void setRecipient(String recipient) {

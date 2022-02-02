@@ -1,4 +1,4 @@
-package logisticManagementSystem;
+package logisticManagementSystem.services;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,11 +26,6 @@ public class FormatValidator {
         return validate(pattern, checking);
     }
 
-    public boolean lockerAddressValid(String checking) {
-        String pattern = "^[A-Z][a-z]{1,10}\\, [A-Z][a-z]{1,10}\\, [0-9]{2}\\-[0-9]{3}";
-        return validate(pattern, checking);
-    }
-
     public boolean lockerAddressStreetValid(String checking) {
         String pattern = "^[A-Z][a-z]{1,10}$";
         return validate(pattern, checking);
@@ -51,5 +46,8 @@ public class FormatValidator {
         return validate(pattern, checking);
     }
 
-
+    public boolean parcelIdValid(String checking) {
+        String pattern = "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}";
+        return validate(pattern, checking);
+    }
 }

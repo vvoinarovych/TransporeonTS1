@@ -1,8 +1,7 @@
-package logisticManagementSystem;
+package logisticManagementSystem.services;
 
-
-
-
+import logisticManagementSystem.enums.Size;
+import logisticManagementSystem.enums.State;
 import logisticManagementSystem.model.Address;
 import logisticManagementSystem.model.Locker;
 import logisticManagementSystem.model.Parcel;
@@ -25,6 +24,7 @@ public class LogisticManager {
 
     public void addLocker(String id, String name, Address address) {
         lockerList.add(new Locker(id, name, address));
+        System.out.println("Locker added\n");
     }
 
     public void addLocker(Locker... lockers) {
@@ -83,7 +83,7 @@ public class LogisticManager {
             System.out.println("no such locker");
     }
 
-    public void updateParcel(String parcelId, String parcelName, Size size, String weight, String recipient, String sender, String recipientLockerId, String senderLockerId, State state) {
+    public void updateParcel(String parcelId, String parcelName, Size size, double weight, String recipient, String sender, String recipientLockerId, String senderLockerId, State state) {
         Parcel parcel = findParcelById(parcelId);
         Locker recipientLocker = findLockerById(recipientLockerId);
         Locker senderLocker = findLockerById(senderLockerId);
@@ -96,6 +96,7 @@ public class LogisticManager {
             parcel.setState(state);
             parcel.setRecipientLocker(recipientLocker);
             parcel.setSenderLocker(senderLocker);
+            System.out.println("Parcel info updated");
         } else
             System.out.println("no such parcel");
     }
@@ -111,25 +112,28 @@ public class LogisticManager {
     public void updateLockerInfo(String id, String name, String address) {
         updateLockerName(id, name);
         updateLockerAddress(id, address);
+        System.out.println("Locker information updated");
     }
 
-    public void addParcel(String name, Size size, double weight, String recipient, String sender, String senderLockerId, String recipientLockerId, State state) {
+    public void addParcel(String name, Size size, double weight, String recipient, String sender, String senderLockerId, String recipientLockerId) {
         Locker senderLocker = findLockerById(senderLockerId);
         Locker recipientLocker = findLockerById(recipientLockerId);
-        if (senderLocker != null && recipientLocker != null)
-            findLockerById(senderLockerId).getParcelList().add(new Parcel(name, size, weight, recipient, sender, findLockerById(senderLockerId), findLockerById(recipientLockerId), state));
-        else
+        if (senderLocker != null && recipientLocker != null) {
+            findLockerById(senderLockerId).getParcelList().add(new Parcel(name, size, weight, recipient, sender, findLockerById(senderLockerId), findLockerById(recipientLockerId)));
+            System.out.println("Parcel added\n");
+        } else
             System.out.println("no such Locker");
     }
 
     public void deleteParcel(String parcelId) {
         Parcel parcel = findParcelById(parcelId);
-        if (parcel != null)
+        if (parcel != null) {
             lockerList.stream().filter(locker -> locker.getParcelById(parcelId) != null)
                     .findFirst().orElse(null)
                     .getParcelList()
                     .remove(parcel);
-        else
+            System.out.println("Parcel deleted");
+        } else
             System.out.println("no such parcel");
     }
 
