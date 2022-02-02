@@ -15,17 +15,19 @@ public class InputHandler {
         System.out.println("Type Locker name in format: XXXXYYY\nwhere:\nX = capital letter from A to Z\nY = number from 0 to 9 ");
         return takeObjectName();
     }
+
     public String takeParcelName() {
         System.out.println("Type Parcel name in format: XXXXYYY\nwhere:\nX = capital letter from A to Z\nY = number from 0 to 9 ");
         return takeObjectName();
     }
 
-    private String takeObjectName(){
+    private String takeObjectName() {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.lockerNameValid(checking))
+            if (validator.lockerNameValid(checking)) {
                 System.out.println("Not good, try again: ");
+            }
         } while (validator.lockerNameValid(checking));
         return checking;
     }
@@ -35,8 +37,9 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.menuChoiceValid(checking))
+            if (validator.menuChoiceValid(checking)) {
                 System.out.println("Pls type number in a 0-9 range");
+            }
         } while (validator.menuChoiceValid(checking));
         return checking;
     }
@@ -45,11 +48,13 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.lockerIdValid(checking))
+            if (validator.lockerIdValid(checking)) {
                 System.out.println("Pls type id in format: XXX-YY\nwhere:\nX = capital letter from A to Z\nY = number from 0 to 9");
+            }
         } while (validator.lockerIdValid(checking));
         return checking;
     }
+
     public String takeLockerId() {
         System.out.println("Provide locker id in format: XXX-YY\nwhere:\nX = capital letter from A to Z\nY = number from 0 to 9");
         return takeLockerIdBase();
@@ -59,6 +64,7 @@ public class InputHandler {
         System.out.println("Provide recipient locker id in format: XXX-YY\nwhere:\nX = capital letter from A to Z\nY = number from 0 to 9");
         return takeLockerIdBase();
     }
+
     public String takeSenderLockerId() {
         System.out.println("Provide sender locker id in format: XXX-YY\nwhere:\nX = capital letter from A to Z\nY = number from 0 to 9");
         return takeLockerIdBase();
@@ -74,8 +80,9 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.lockerAddressStreetValid(checking))
+            if (validator.lockerAddressStreetValid(checking)) {
                 System.out.println("Try again: ");
+            }
         } while (validator.lockerAddressStreetValid(checking));
         return checking;
     }
@@ -85,8 +92,9 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.lockerAddressStreetValid(checking))
+            if (validator.lockerAddressStreetValid(checking)) {
                 System.out.println("Try again: ");
+            }
         } while (validator.lockerAddressStreetValid(checking));
         return checking;
     }
@@ -96,8 +104,9 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.lockerPostalCodeValid(checking))
+            if (validator.lockerPostalCodeValid(checking)) {
                 System.out.println("Try again: ");
+            }
         } while (validator.lockerPostalCodeValid(checking));
         return checking;
     }
@@ -107,8 +116,9 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.parcelWeightValid(checking))
+            if (validator.parcelWeightValid(checking)) {
                 System.out.println("Try again: ");
+            }
         } while (validator.parcelWeightValid(checking));
         return Double.parseDouble(checking);
     }
@@ -117,18 +127,21 @@ public class InputHandler {
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.nameValid(checking))
+            if (validator.nameValid(checking)) {
                 System.out.println("Try again: ");
+            }
         } while (validator.nameValid(checking));
         return checking;
     }
-    public String takeRecipientName(){
+
+    public String takeRecipientName() {
         System.out.println("Type Parsel's recipient name:");
-        return  takeName();
+        return takeName();
     }
-    public String takeSenderName(){
+
+    public String takeSenderName() {
         System.out.println("Type Parsel's sender name:");
-        return  takeName();
+        return takeName();
     }
 
     public Size takeParcelSize() {
@@ -143,11 +156,13 @@ public class InputHandler {
                     break;
                 }
             }
-            if(result ==null)
+            if (result == null) {
                 System.out.println("Try again");
+            }
         } while (result == null);
         return result;
     }
+
     public State takeParcelState() {
         System.out.println("Chose parcel size from: RECEIVED,SENT,WAITING_FOR_PICKING_UP,DELIVERED:");
         State result = null;
@@ -160,19 +175,20 @@ public class InputHandler {
                     break;
                 }
             }
-            if(result ==null)
+            if (result == null) {
                 System.out.println("Try again");
+            }
         } while (result == null);
         return result;
     }
-
     public String takeParcelId() {
         System.out.println("Type parcel Id:");
         String checking;
         do {
             checking = input.nextLine();
-            if (validator.parcelIdValid(checking))
+            if (validator.parcelIdValid(checking)) {
                 System.out.println("Try again: ");
+            }
         } while (validator.parcelIdValid(checking));
         return checking;
     }

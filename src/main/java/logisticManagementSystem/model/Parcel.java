@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class Parcel {
 
-    private final UUID id;
+    private UUID id;
     private String name;
     private Size size;
     private double weight;
@@ -17,6 +17,18 @@ public class Parcel {
     private Locker senderLocker;
     private Locker recipientLocker;
     private State state;
+
+    public Parcel(String id, String name, Size size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker) {
+        this.id = UUID.fromString(id);
+        this.name = name;
+        this.size = size;
+        this.weight = weight;
+        this.recipient = recipient;
+        this.sender = sender;
+        this.senderLocker = senderLocker;
+        this.recipientLocker = recipientLocker;
+        this.state = State.WAITING_FOR_PICKING_UP;
+    }
 
     public Parcel(String name, Size size, double weight, String recipient, String sender, Locker senderLocker, Locker recipientLocker) {
         id = UUID.randomUUID();
@@ -29,6 +41,8 @@ public class Parcel {
         this.recipientLocker = recipientLocker;
         this.state = State.WAITING_FOR_PICKING_UP;
     }
+
+
 
     public UUID getId() {
         return id;
