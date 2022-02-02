@@ -1,5 +1,7 @@
 package logisticManagementSystem.model;
 
+import logisticManagementSystem.Address;
+
 import java.util.LinkedList;
 import java.util.List;
 

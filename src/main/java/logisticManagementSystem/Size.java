@@ -1,4 +1,4 @@
-package logisticManagementSystem.enums;
+package logisticManagementSystem;
 
 public enum Size {
     S,L,XL,XXL,XXXL

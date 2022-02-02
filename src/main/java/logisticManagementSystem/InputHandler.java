@@ -1,7 +1,4 @@
-package logisticManagementSystem.services;
-
-import logisticManagementSystem.enums.Size;
-import logisticManagementSystem.enums.State;
+package logisticManagementSystem;
 
 import java.util.Scanner;
 

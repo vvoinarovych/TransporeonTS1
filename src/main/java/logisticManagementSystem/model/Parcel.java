@@ -1,7 +1,7 @@
 package logisticManagementSystem.model;
 
-import logisticManagementSystem.enums.Size;
-import logisticManagementSystem.enums.State;
+import logisticManagementSystem.Size;
+import logisticManagementSystem.State;
 
 
 import java.util.UUID;

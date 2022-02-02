@@ -1,4 +1,4 @@
-package logisticManagementSystem.model;
+package logisticManagementSystem;
 
 public class Address {
     private final String street;

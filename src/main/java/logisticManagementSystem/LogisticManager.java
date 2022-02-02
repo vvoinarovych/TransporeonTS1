@@ -1,14 +1,12 @@
-package logisticManagementSystem.services;
+package logisticManagementSystem;
 
-import logisticManagementSystem.enums.Size;
-import logisticManagementSystem.enums.State;
-import logisticManagementSystem.model.Address;
 import logisticManagementSystem.model.Locker;
 import logisticManagementSystem.model.Parcel;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class LogisticManager {
@@ -18,17 +16,9 @@ public class LogisticManager {
         lockerList = new LinkedList<>();
     }
 
-    public void addLocker(Locker locker) {
-        lockerList.add(locker);
-    }
-
     public void addLocker(String id, String name, Address address) {
         lockerList.add(new Locker(id, name, address));
         System.out.println("Locker added\n");
-    }
-
-    public void addLocker(Locker... lockers) {
-        lockerList.addAll(Arrays.asList(lockers));
     }
 
     public void deleteLocker(String id) {
@@ -46,16 +36,9 @@ public class LogisticManager {
                 .orElse(null);
     }
 
-    private Parcel findParcelInsideLockerById(String lockerId, String parcelId) {
-        return findLockerById(lockerId).getParcelList().stream()
-                .filter(parcel -> String.valueOf(parcel.getId()).equals(parcelId))
-                .findFirst()
-                .orElse(null);
-    }
-
     private Parcel findParcelById(String parcelId) {
-        return lockerList.stream().filter(locker -> locker.getParcelById(parcelId) != null)
-                .findFirst().orElse(null).getParcelById(parcelId);
+        return Objects.requireNonNull(lockerList.stream().filter(locker -> locker.getParcelById(parcelId) != null)
+                .findFirst().orElse(null)).getParcelById(parcelId);
 
     }
 
@@ -128,8 +111,8 @@ public class LogisticManager {
     public void deleteParcel(String parcelId) {
         Parcel parcel = findParcelById(parcelId);
         if (parcel != null) {
-            lockerList.stream().filter(locker -> locker.getParcelById(parcelId) != null)
-                    .findFirst().orElse(null)
+            Objects.requireNonNull(lockerList.stream().filter(locker -> locker.getParcelById(parcelId) != null)
+                            .findFirst().orElse(null))
                     .getParcelList()
                     .remove(parcel);
             System.out.println("Parcel deleted");

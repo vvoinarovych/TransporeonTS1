@@ -1,9 +1,8 @@
 package logisticManagementSystem.ui;
-import logisticManagementSystem.model.Address;
-import logisticManagementSystem.services.FormatValidator;
-import logisticManagementSystem.services.InputHandler;
-import logisticManagementSystem.services.LogisticManager;
-
+import logisticManagementSystem.Address;
+import logisticManagementSystem.FormatValidator;
+import logisticManagementSystem.InputHandler;
+import logisticManagementSystem.LogisticManager;
 import java.util.Scanner;
 
 
