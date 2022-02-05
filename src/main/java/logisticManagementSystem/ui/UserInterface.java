@@ -12,11 +12,7 @@ public class UserInterface {
         FormatValidator validator = new FormatValidator();
         InputHandler inputHandler = new InputHandler(new Scanner(System.in), validator);
         String initMenu = "============= LockerManager menu =============\n[1] Add Parcel Locker\n[2] Remove Parcel Locker\n[3] Display all Parcel Lockers\n[4] Display Parcel Lockers in specific city\n[5] Update Parcel Locker information\n[6] Add Parcel\n[7] Remove Parcel\n[8] Display Parcel in specific Parcel Locker\n[9] Update Parcel information\n[0] Exit";
-
-        manager.addLocker("QWE-12", "QWER123", new Address("Bydgoska", "Krakow", "40-566"));
-        manager.addLocker("TGF-12", "YGFS123", new Address("Bydgoska", "Berlin", "40-566"));
-        manager.addLocker("KLE-12", "IIII123", new Address("Bydgoska", "Moscow", "40-566"));
-        manager.addParcel("PARS123", Size.S,300.98,"Joe Black", "Joe White", "QWE-12", "TGF-12");
+        
 
         do {
             System.out.println(initMenu);
