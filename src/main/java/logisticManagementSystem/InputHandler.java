@@ -70,9 +70,9 @@ public class InputHandler {
         return takeLockerIdBase();
     }
 
-    public String takeLockerAddress() {
+    public Address takeLockerAddress() {
         System.out.println("Provide locker address in format: street, city, postal Code: ");
-        return takeLockerAddressStreet() + ", " + takeLockerAddressCity() + ", " + takeLockerPostalCode();
+        return new Address(takeLockerAddressStreet(),  takeLockerAddressCity(), takeLockerPostalCode());
     }
 
     private String takeLockerAddressStreet() {

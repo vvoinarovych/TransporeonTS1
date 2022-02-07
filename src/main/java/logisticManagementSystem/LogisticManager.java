@@ -9,13 +9,12 @@ import java.util.*;
 public class LogisticManager {
     private final List<Locker> lockerList;
 
-    public LogisticManager() {
-        lockerList = new LinkedList<>();
+    public LogisticManager(List<Locker> lockerList) {
+        this.lockerList = lockerList;
     }
 
-    public void addLocker(String id, String name, Address address) {
-        lockerList.add(new Locker(id, name, address));
-        System.out.println("Locker added\n");
+    public void addLocker(Locker locker) {
+        lockerList.add(locker);
     }
 
     public void deleteLocker(String id) {
@@ -72,13 +71,7 @@ public class LogisticManager {
                 .forEach(System.out::println);
     }
 
-    public void updateLockerName(String id, String name) {
-        Locker locker = findLockerById(id);
-        if (locker != null)
-            findLockerById(id).setName(name);
-        else
-            System.out.println("no such locker");
-    }
+
 
     public void updateParcel(String parcelId, String parcelName, Size size, double weight, String recipient, String sender, String recipientLockerId, String senderLockerId, State state) {
         Parcel parcel = findParcelById(parcelId);
@@ -103,18 +96,13 @@ public class LogisticManager {
         }
     }
 
-    public void updateLockerAddress(String id, String address) {
+    public void updateLockerInfo(String id, String name, Address address) {
         Locker locker = findLockerById(id);
-        if (locker != null)
+        if (locker != null) {
+            locker.setName(name);
             locker.setAddress(address);
-        else
+        }else
             System.out.println("no such locker");
-    }
-
-    public void updateLockerInfo(String id, String name, String address) {
-        updateLockerName(id, name);
-        updateLockerAddress(id, address);
-        System.out.println("Locker information updated");
     }
 
     public void addParcel(String name, Size size, double weight, String recipient, String sender, String senderLockerId, String recipientLockerId) {
@@ -152,5 +140,9 @@ public class LogisticManager {
         return "LockerManager{" +
                 "lockerList=" + lockerList +
                 '}';
+    }
+
+    public List<Locker> getLockerList() {
+        return lockerList;
     }
 }

@@ -4,6 +4,7 @@ import logisticManagementSystem.Size;
 import logisticManagementSystem.State;
 
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Parcel {
@@ -43,6 +44,37 @@ public class Parcel {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public Size getSize() {
+        return size;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public Locker getSenderLocker() {
+        return senderLocker;
+    }
+
+    public Locker getRecipientLocker() {
+        return recipientLocker;
+    }
+
+    public State getState() {
+        return state;
+    }
 
     public UUID getId() {
         return id;
@@ -95,5 +127,16 @@ public class Parcel {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Parcel parcel = (Parcel) o;
+        return Double.compare(parcel.weight, weight) == 0 && id.equals(parcel.id) && name.equals(parcel.name) && size == parcel.size && recipient.equals(parcel.recipient) && sender.equals(parcel.sender) && senderLocker.equals(parcel.senderLocker) && recipientLocker.equals(parcel.recipientLocker) && state == parcel.state;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, size, weight, recipient, sender, senderLocker, recipientLocker, state);
+    }
 }

@@ -4,6 +4,7 @@ import logisticManagementSystem.Address;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Locker {
     private final String id;
@@ -11,11 +12,12 @@ public class Locker {
     private Address address;
     private final List<Parcel> parcelList;
 
-    public Locker(String id, String name, Address address) {
+
+    public Locker(String id, String name, Address address, List<Parcel> parcelList) {
         this.id = id;
         this.name = name;
         this.address = address;
-        parcelList = new LinkedList<>();
+        this.parcelList = parcelList;
     }
 
     public List<Parcel> getParcelList() {
@@ -45,8 +47,8 @@ public class Locker {
         this.name = name;
     }
 
-    public void setAddress(String address) {
-        this.address =new Address(address);
+    public void setAddress(Address address) {
+        this.address =address;
     }
 
     @Override
@@ -57,5 +59,18 @@ public class Locker {
                 ", address='" + address + '\'' +
                 ", packageList=" + parcelList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Locker locker = (Locker) o;
+        return id.equals(locker.id) && name.equals(locker.name) && address.equals(locker.address) && parcelList.equals(locker.parcelList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address, parcelList);
     }
 }
